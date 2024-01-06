@@ -5,5 +5,5 @@ http.createServer(function (req, res) {
   res.write('Hello World!'); //write a response to the client
   res.end(); //end the response
 }).listen(4000,()=>{
-    console.log("run on 4000")
+    console.log("server running on 4000")
 }); //the server object listens on port 8080
