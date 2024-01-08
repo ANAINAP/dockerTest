@@ -47,13 +47,13 @@ jobs:
              file: ./Dockerfile
              push: true
              tags: ${{ secrets.USERNAME }}/docker_ga:latest
-    - name: Starting Docker
-      uses: actions/checkout@v3
-    - name: Create dockerpull3.sh on EC2
-      run: chmod +x dockerpull3.sh
-    - name: Run deploy.sh on EC2
-      run: |
-          ./dockerpull3.sh     
+    # - name: Starting Docker
+    #   uses: actions/checkout@v3
+    # - name: Create dockerpull3.sh on EC2
+    #   run: chmod +x dockerpull3.sh
+    # - name: Run deploy.sh on EC2
+    #   run: |
+    #       ./dockerpull3.sh     
     - name: Deploy to Server 1
       uses: easingthemes/ssh-deploy@main
       with:
@@ -61,5 +61,5 @@ jobs:
         REMOTE_HOST: ${{ secrets.HOST_DNS }}
         REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
         TARGET: ${{ secrets.TARGET_DIR }}
-               
-      
+    - name : pm2 start           
+      run: pm2 start index --watch -i max 
