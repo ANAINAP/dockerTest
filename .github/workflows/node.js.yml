@@ -47,3 +47,19 @@ jobs:
              file: ./Dockerfile
              push: true
              tags: ${{ secrets.USERNAME }}/docker_ga:latest
+    - name: Starting Docker
+      uses: actions/checkout@v3
+    - name: Create dockerpull.sh on EC2
+      run: chmod +x dockerpull.sh
+    - name: Run deploy.sh on EC2
+      run: |
+          ./dockerpull.sh     
+    - name: Deploy to Server 1
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.HOST_DNS }}
+        REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
+        TARGET: ${{ secrets.TARGET_DIR }}
+               
+      
