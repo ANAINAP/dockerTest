@@ -1,10 +1,10 @@
 #!/bin/bash
 # Customize these variables for your environment
-IMAGE_NAME="clockbox"
+IMAGE_NAME="docker_ga"
 IMAGE_TAG="latest"  # Or specify a specific tag
 CONTAINER_NAME="clock_container"
-DOCKER_USERNAME="sreeshma123"
-DOCKER_PASSWORD="Vishnu123#"
+DOCKER_USERNAME="anainap123"
+DOCKER_PASSWORD="anaina@123"
   # Adjust as needed for port mappings
 # Pull the latest image if it's not already available
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
